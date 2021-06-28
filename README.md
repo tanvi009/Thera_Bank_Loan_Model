@@ -7,5 +7,14 @@ Job is to build the best model which can classify the right customers who have a
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Let's understand few concepts used in the solution:
+**What is Data Mining?**
+Data mining, also known as knowledge discovery in data (KDD), is a process of extracting information to identify patterns, trends, and useful data that would allow the business to take the data-driven decision from huge sets of data. Given the evolution of data warehousing technology and the growth of big data, adoption of data mining techniques has rapidly accelerated over the last couple of decades, assisting companies by transforming their raw data into useful knowledge. Data mining has improved organizational decision-making through insightful data analyses.
+
+Decision Trees are commonly used in data mining with the objective of creating a model that predicts the value of a target (or dependent variable) based on the values of several input (or independent variables).  Let's discuss about CART decision tree methodology. 
+ 
+ **CART:** CART (Classification and Regression Trees) can be used for both classification and regression problems. The difference lies in the target variable:
+1. With classification, we attempt to predict a class label. In other words, classification is used for problems where the output (target variable) takes a finite set of values, e.g., whether it will rain tomorrow or not.
+2. Meanwhile, regression is used to predict a numerical label. This means your output can take an infinite set of values, e.g., a house price.
+
+Creating a CART model involves selecting input variables and split points on those variables until a suitable tree is constructed. To build the decision tree in an efficient way we use the concept of Entropy and Gini Impurity.
 
