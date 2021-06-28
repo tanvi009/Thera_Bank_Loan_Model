@@ -16,5 +16,32 @@ Decision Trees are commonly used in data mining with the objective of creating a
 1. With classification, we attempt to predict a class label. In other words, classification is used for problems where the output (target variable) takes a finite set of values, e.g., whether it will rain tomorrow or not.
 2. Meanwhile, regression is used to predict a numerical label. This means your output can take an infinite set of values, e.g., a house price.
 
-Creating a CART model involves selecting input variables and split points on those variables until a suitable tree is constructed. To build the decision tree in an efficient way we use the concept of Entropy and Gini Impurity.
+The pseudocode for constructing a CART decision tree is:
+1. Chose a feature that has the optimal index. The index is calculated using the cost function.
+2. Split the dataset based on the chosen feature
+3. Repeats the process until it reaches to the leaves (Or meet the stopping criteria)
+
+Creating a CART model involves selecting input variables and split points on those variables until a suitable tree is constructed. To build the CART decision trees in an efficient way we use the concept of Entropy and Gini Impurity.
+
+**1. Gini Impurity:** 
+Gini impurity is the lost function being used in the CART method which measures how much noise a category has. In other words, it is a measure of how often a randomly chosen element from the set would be incorrectly labelled if it was randomly labelled according to distribution of labels in the subset. For example, the weather feature can have categories: rain, sunny, or snowy; a numerical feature such as grade can be divide into 2 blocks: <70 or ≥70. Gini impurity can be calculated by the following formula:
+
+![image](https://user-images.githubusercontent.com/63853707/123602135-13eb4d00-d816-11eb-850a-fef052beacd5.png)
+
+**2. Gini Index:**
+Gini Index combines the category noises together to get the feature noise. Gini Index is the weighted sum of Gini Impurity based on the corresponding fraction of the category in the feature. The formula is:
+
+![image](https://user-images.githubusercontent.com/63853707/123602637-96740c80-d816-11eb-89dc-5531c43f62ad.png)
+
+**3. Entropy:**
+Entropy can be defined as a measure of the purity of the sub split. Entropy always lies between 0 to 1. In physics, entropy represents the unpredictability of a random variable. The chance of having Head or Tail from a fair coin is 50/50, and so its entropy value is 1, which is the highest value for randomness. On the other hand, having a value 0 indicates the corresponding event is destined.The entropy of any split can be calculated by this formula:
+
+![image](https://user-images.githubusercontent.com/63853707/123602893-e2bf4c80-d816-11eb-976e-baf5df977361.png)
+
+**4. Information Gain:**
+After obtaining the entropy for each category, we can combine them to get the information gain values for the features. The more information we gain, the better. The formula is:
+
+![image](https://user-images.githubusercontent.com/63853707/123603058-169a7200-d817-11eb-9507-c70b42d48f37.png)
+
+
 
