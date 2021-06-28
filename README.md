@@ -34,14 +34,34 @@ Gini Index combines the category noises together to get the feature noise. Gini 
 ![image](https://user-images.githubusercontent.com/63853707/123602637-96740c80-d816-11eb-89dc-5531c43f62ad.png)
 
 **3. Entropy:**
-Entropy can be defined as a measure of the purity of the sub split. Entropy always lies between 0 to 1. In physics, entropy represents the unpredictability of a random variable. The chance of having Head or Tail from a fair coin is 50/50, and so its entropy value is 1, which is the highest value for randomness. On the other hand, having a value 0 indicates the corresponding event is destined.The entropy of any split can be calculated by this formula:
+Entropy can be defined as a measure of the purity of the sub split. Entropy always lies between 0 to 1. Entropy is a measure of the randomness of a system. In physics, entropy represents the unpredictability of a random variable. The chance of having Head or Tail from a fair coin is 50/50, and so its entropy value is 1, which is the highest value for randomness. On the other hand, having a value 0 indicates the corresponding event is destined.The entropy of any split can be calculated by this formula:
 
 ![image](https://user-images.githubusercontent.com/63853707/123602893-e2bf4c80-d816-11eb-976e-baf5df977361.png)
 
 **4. Information Gain:**
-After obtaining the entropy for each category, we can combine them to get the information gain values for the features. The more information we gain, the better. The formula is:
+The information gain is the amount by which the Entropy of the system reduces due to the split that we have done. The more information we gain, the better. The formula is:
 
 ![image](https://user-images.githubusercontent.com/63853707/123603058-169a7200-d817-11eb-9507-c70b42d48f37.png)
+
+Decision Trees are very useful and don't require standardising or normalising the data since it works on rules. Decision trees being so powerful also have a tendency to overfit. We keep on dividing the dataset till we get perfect split. This might capture last point of noise. To avoid overfitting we can prune our tree. 
+
+The fastest and simplest pruning method is to work through each leaf node in the tree and evaluate the effect of removing it using a hold-out test set. Leaf nodes are removed only if it results in a drop in the overall cost function on the entire test set. You stop removing nodes when no further improvements can be made. In Pruning we use complexity parameter, which says everytime you add a branch, the error should decrease more than a specifically given threshold, usually called alpha. If decrease in error is not less than alpha than branch is not worth making.
+
+Problem with Decision trees are that if we change data little bit, whole tree will give different output. Decision Trees are very sensitive to small changes in the data. Also, we discussed that they might overfit. So, instead of using one decision tree what if we use bunch of decision trees for our prediction. This concept is called Random Forest. Random forests are more stable and reliable than just a decision tree.
+
+**Random forests** (RF) are basically a bag containing n Decision Trees (DT) having a different set of hyper-parameters and trained on different subsets of data. Let’s consider that I have somehow trained 100 trees with their respective subset of data. Now I will ask all the hundred trees in my bag that what is their prediction on my test data. Now we need to take only one decision on one example or one test data, we do it by taking a simple vote. We go with what the majority of the trees have predicted for that example.
+
+![image](https://user-images.githubusercontent.com/63853707/123617770-39cc1e00-d825-11eb-86a7-1f97a05b7a7d.png)
+
+While building subsets of data for trees, the word “random” comes into the picture. A subset of data is made by randomly selecting x number of features (columns) and y number of examples (rows) from the original dataset of n features and m examples. This is called Bootstrap Aggregation or Bagging which is used while creating our Decision Trees. This is done because if we use same dataset then results will be same, which will defeat our purpose of Random Forest. Sampling in Bagging is done by replacements, i.e. observations might repeat. While growing a decision tree during the bagging process, random forests perform split-variable randomization where each time a split is to be performed, the search for the split variable is limited to a random subset of mtry of the original p features.
+
+But what should be ideal value for mtry?
+
+When mtry=p - the algorithm is equivalent to bagging decision trees. In this case correlation might be high
+When mtry is very small than p- At various level of split the chance of actually catching one of the important variables become small. The trees have weal ability to predict.
+
+Typical default values are mtry=p/3  (regression) and mtry=√p (classification) but this should be considered a tuning parameter. 
+
 
 
 
