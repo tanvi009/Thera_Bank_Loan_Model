@@ -164,7 +164,4 @@ Adjusted R square formula:
 ![image](https://user-images.githubusercontent.com/63853707/123639163-8b80a280-d83d-11eb-81b0-c6a32a289e9c.png)
 
 Here,
-
--n represents the number of data points in our dataset
--k represents the number of independent variables, and
--R represents the R-squared values determined by the model.
+-n represents the number of data points in our dataset,k represents the number of independent variables, and R represents the R-squared values determined by the model.
