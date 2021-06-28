@@ -92,9 +92,11 @@ Few definitions you must be aware of:
 **2. Gain and Lift Chart:**
 
 Lift is a measure of the effectiveness of a predictive model calculated as the ratio between the results obtained with and without the predictive model.
+
 ![image](https://user-images.githubusercontent.com/63853707/123632285-6425d780-d835-11eb-8bbe-1cf8f4898746.png)
 
 Gain chart tells us which segment to target for our business problem.
+
 ![image](https://user-images.githubusercontent.com/63853707/123632269-5e2ff680-d835-11eb-8e0c-4749892724bc.png)
 
 Gain and Lift chart are mainly concerned to check the rank ordering of the probabilities. Here are the steps to build a Lift/Gain chart:
@@ -128,11 +130,41 @@ Lift is dependent on total response rate of the population. Hence, if the respon
 
 ROC curve on the other hand is almost independent of the response rate. This is because it has the two axis coming out from columnar calculations of confusion matrix. The numerator and denominator of both x and y axis will change on similar scale in case of response rate shift.
 
-**5. Gini Coefficient**
+**5. Gini Coefficient:**
 
 Gini coefficient is sometimes used in classification problems. It is ratio between area between the ROC curve and the diagnol line & the area of the above triangle. Following is the formulae used :
 
 Gini = 2*AUC – 1
 
-**6. Concordant – Discordant ratio**
+**6. Concordant – Discordant ratio:**
 
+Concordant – Discordant ratio is also used in Classification Problem. We take pair of all features. We choose all the pairs where we will find one responder and other non-responder.The concordant pair is where the probability of responder was higher than non-responder. Whereas discordant pair is where the vice-versa holds true. In case both the probabilities were equal, we say its a tie. We calculate number of concordant and discordant pair.
+
+**7. Root Mean Squared Error (RMSE):**
+
+RMSE is used in regression problems. 
+
+![image](https://user-images.githubusercontent.com/63853707/123638679-10b78780-d83d-11eb-8a90-f1b178d25aa7.png)
+
+where, N is Total Number of Observations
+
+**8. R-Squared:**
+
+R-squared or R2 explains the degree to which your input variables explain the variation of your output / predicted variable. So, if R-square is 0.8, it means 80% of the variation in the output variable is explained by the input variables. So, in simple terms, higher the R squared, the more variation is explained by your input variables and hence better is your model.
+
+However, the problem with R-squared is that it will either stay the same or increase with addition of more variables, even if they do not have any relationship with the output variables. This is where “Adjusted R square” comes to help. Adjusted R-square penalizes you for adding variables which do not improve your existing model. The Adjusted R-squared takes into account the number of independent variables used for predicting the target variable. In doing so, we can determine whether adding new variables to the model actually increases the model fit.
+
+R-squared formula:
+
+![image](https://user-images.githubusercontent.com/63853707/123639267-a3582680-d83d-11eb-97b3-23f96b72a37b.png)
+
+
+Adjusted R square formula:
+
+![image](https://user-images.githubusercontent.com/63853707/123639163-8b80a280-d83d-11eb-81b0-c6a32a289e9c.png)
+
+Here,
+
+n represents the number of data points in our dataset
+k represents the number of independent variables, and
+R represents the R-squared values determined by the model.
