@@ -53,7 +53,7 @@ Problem with Decision trees are that if we change data little bit, whole tree wi
 
 ![image](https://user-images.githubusercontent.com/63853707/123617770-39cc1e00-d825-11eb-86a7-1f97a05b7a7d.png)
 
-While building subsets of data for trees, the word “random” comes into the picture. A subset of data is made by randomly selecting x number of features (columns) and y number of examples (rows) from the original dataset of n features and m examples. This is called Bootstrap Aggregation or Bagging which is used while creating our Decision Trees. This is done because if we use same dataset then results will be same, which will defeat our purpose of Random Forest. Sampling in Bagging is done by replacements, i.e. observations might repeat. While growing a decision tree during the bagging process, random forests perform split-variable randomization where each time a split is to be performed, the search for the split variable is limited to a random subset of mtry of the original p features.
+While building subsets of data for trees, the word “random” comes into the picture. A subset of data is made by randomly selecting x number of features (columns) and y number of examples (rows) from the original dataset of n features and m examples. This is called Bootstrap Aggregation or Bagging which is used while creating our Decision Trees. This is done because if we use same dataset then results will be same, which will defeat our purpose of Random Forest. Sampling in Bagging is done by replacements, i.e. observations might repeat. While growing a decision tree during the bagging process, random forests perform split-variable randomization where each time a split is to be performed, the search for the split variable is limited to a random subset of mtry of the original p features. This forces even more variation amongst the trees in the model and ultimately results in lower correlation across trees and more diversification.
 
 But what should be ideal value for mtry?
 
@@ -62,6 +62,9 @@ When mtry is very small than p- At various level of split the chance of actually
 
 Typical default values are mtry=p/3  (regression) and mtry=√p (classification) but this should be considered a tuning parameter. 
 
+What do we need in order for our random forest to make accurate class predictions?
 
+1. We need features that have at least some predictive power. After all, if we put garbage in then we will get garbage out.
+2. The trees of the forest and more importantly their predictions need to be uncorrelated (or at least have low correlations with each other). While the algorithm itself via feature randomness tries to engineer these low correlations for us, the features we select and the hyper-parameters we choose will impact the ultimate correlations as well.
 
 
