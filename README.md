@@ -4,8 +4,10 @@ This case is about a bank (Thera Bank) which has a growing customer base. Majori
 
 Job is to build the best model which can classify the right customers who have a higher probability of purchasing the loan. 
 
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Few concepts which might help you with Problem:
 
 **What is Data Mining?**
 Data mining, also known as knowledge discovery in data (KDD), is a process of extracting information to identify patterns, trends, and useful data that would allow the business to take the data-driven decision from huge sets of data. Given the evolution of data warehousing technology and the growth of big data, adoption of data mining techniques has rapidly accelerated over the last couple of decades, assisting companies by transforming their raw data into useful knowledge. Data mining has improved organizational decision-making through insightful data analyses.
@@ -67,4 +69,70 @@ What do we need in order for our random forest to make accurate class prediction
 1. We need features that have at least some predictive power. After all, if we put garbage in then we will get garbage out.
 2. The trees of the forest and more importantly their predictions need to be uncorrelated (or at least have low correlations with each other). While the algorithm itself via feature randomness tries to engineer these low correlations for us, the features we select and the hyper-parameters we choose will impact the ultimate correlations as well.
 
+
+
+**Model Evaluation:**
+
+Building accurate models will be futile if we don't have any measure to evaluate it. Hence Model Evaluation metrics are extremely important. Evaluating model performance with the data used for training is not acceptable in data science because it can easily generate overoptimistic and overfitted models. To avoid overfitting, methods use a test set (not seen by the model) to evaluate model performance. Few Model Evaluation metrics are:
+
+**1. Confusion Matrix:**
+
+A Confusion matrix is an N x N matrix used for evaluating the performance of a classification model, where N is the number of target classes. The matrix compares the actual target values with those predicted by the machine learning model.
+
+![image](https://user-images.githubusercontent.com/63853707/123622564-fde78780-d829-11eb-97bb-ef50f64dcb93.png)
+
+Few definitions you must be aware of:
+
+1. Accuracy : the proportion of the total number of predictions that were correct.
+2. Positive Predictive Value or Precision : the proportion of positive cases that were correctly identified.
+3. Negative Predictive Value : the proportion of negative cases that were correctly identified.
+4. Sensitivity or Recall : the proportion of actual positive cases which are correctly identified.
+5. Specificity : the proportion of actual negative cases which are correctly identified.
+
+**2. Gain and Lift Chart:**
+
+Lift is a measure of the effectiveness of a predictive model calculated as the ratio between the results obtained with and without the predictive model.
+![image](https://user-images.githubusercontent.com/63853707/123632285-6425d780-d835-11eb-8bbe-1cf8f4898746.png)
+
+Gain chart tells us which segment to target for our business problem.
+![image](https://user-images.githubusercontent.com/63853707/123632269-5e2ff680-d835-11eb-8e0c-4749892724bc.png)
+
+Gain and Lift chart are mainly concerned to check the rank ordering of the probabilities. Here are the steps to build a Lift/Gain chart:
+
+Step 1 : Calculate probability for each observation
+Step 2 : Rank these probabilities in decreasing order.
+Step 3 : Build deciles with each group having almost 10% of the observations.
+Step 4 : Calculate the response rate at each deciles for Good (Responders) ,Bad (Non-responders) and total.
+
+The Greater the area between the Lift / Gain and Baseline, the Better the model.
+
+**3. Kolomogorov Smirnov chart:**
+
+K-S or Kolmogorov-Smirnov chart measures performance of classification models. More accurately, K-S is a measure of the degree of separation between the positive and negative distributions. The K-S is 100, if the scores partition the population into two separate groups in which one group contains all the positives and the other all the negatives.
+On the other hand, If the model cannot differentiate between positives and negatives, then it is as if the model selects cases randomly from the population. The K-S would be 0. In most classification models the K-S will fall between 0 and 100, and that the higher the value the better the model is at separating the positive from negative cases.
+
+**4. ROC curve (ROC) and Area Under Curve (AUC):**
+
+The ROC (Receiver operating characteristic) curve is the plot between sensitivity and (1- specificity). (1- specificity) is also known as false positive rate and sensitivity is also known as True Positive rate.
+
+For each sensitivity, we get a different specificity.The two vary as follows:
+
+![image](https://user-images.githubusercontent.com/63853707/123633161-7c4a2680-d836-11eb-8a77-8297e9499a84.png)
+
+To bring this curve down to a single number, we find the area under this curve (AUC).Hence AUC itself is the ratio under the curve and the total area.
+
+**NOTE:**
+Why should you use ROC and not metrics like lift curve?
+
+Lift is dependent on total response rate of the population. Hence, if the response rate of the population changes, the same model will give a different lift chart. A solution to this concern can be true lift chart (finding the ratio of lift and perfect model lift at each decile). But such ratio rarely makes sense for the business.
+
+ROC curve on the other hand is almost independent of the response rate. This is because it has the two axis coming out from columnar calculations of confusion matrix. The numerator and denominator of both x and y axis will change on similar scale in case of response rate shift.
+
+**5. Gini Coefficient**
+
+Gini coefficient is sometimes used in classification problems. It is ratio between area between the ROC curve and the diagnol line & the area of the above triangle. Following is the formulae used :
+
+Gini = 2*AUC – 1
+
+**6. Concordant – Discordant ratio**
 
