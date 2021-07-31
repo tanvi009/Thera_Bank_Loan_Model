@@ -26,7 +26,7 @@ The pseudocode for constructing a CART decision tree is:
 Creating a CART model involves selecting input variables and split points on those variables until a suitable tree is constructed. To build the CART decision trees in an efficient way we use the concept of Entropy and Gini Impurity.
 
 **1. Gini Impurity:** 
-Gini impurity is the lost function being used in the CART method which measures how much noise a category has. In other words, it is a measure of how often a randomly chosen element from the set would be incorrectly labelled if it was randomly labelled according to distribution of labels in the subset. For example, the weather feature can have categories: rain, sunny, or snowy; a numerical feature such as grade can be divide into 2 blocks: <70 or ≥70. Gini impurity can be calculated by the following formula:
+Gini impurity is the loss function being used in the CART method which measures how much noise a category has. In other words, it is a measure of how often a randomly chosen element from the set would be incorrectly labelled if it was randomly labelled according to distribution of labels in the subset. For example, the weather feature can have categories: rain, sunny, or snowy; a numerical feature such as grade can be divide into 2 blocks: <70 or ≥70. Gini impurity can be calculated by the following formula:
 
 ![image](https://user-images.githubusercontent.com/63853707/123602135-13eb4d00-d816-11eb-850a-fef052beacd5.png)
 
