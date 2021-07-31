@@ -102,8 +102,11 @@ Gain chart tells us which segment to target for our business problem.
 Gain and Lift chart are mainly concerned to check the rank ordering of the probabilities. Here are the steps to build a Lift/Gain chart:
 
 Step 1 : Calculate probability for each observation
+
 Step 2 : Rank these probabilities in decreasing order.
+
 Step 3 : Build deciles with each group having almost 10% of the observations.
+
 Step 4 : Calculate the response rate at each deciles for Good (Responders) ,Bad (Non-responders) and total.
 
 The Greater the area between the Lift / Gain and Baseline, the Better the model.
