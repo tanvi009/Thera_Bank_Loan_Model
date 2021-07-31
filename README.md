@@ -135,7 +135,7 @@ ROC curve on the other hand is almost independent of the response rate. This is 
 
 **5. Gini Coefficient:**
 
-Gini coefficient is sometimes used in classification problems. It is ratio between area between the ROC curve and the diagnol line & the area of the above triangle. Following is the formulae used :
+Gini coefficient is sometimes used in classification problems. It is ratio between area between the ROC curve and the diagonal line & the area of the above triangle. Following is the formulae used :
 
 Gini = 2*AUC – 1
 
